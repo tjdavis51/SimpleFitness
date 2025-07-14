@@ -12,19 +12,24 @@ import Nutrition from './pages/Nutrition'
 import Videos from './pages/Videos'
 import ProtectedRoute from './components/ProtectedRoute'
 
+// start the app component which will render the entire app
 export default function App() {
   return (
+    // use the browser router to turn on client side routing
     <BrowserRouter>
+    {/* apply a few global bootstrp styles */}
       <div className="d-flex flex-column min-vh-100">
         <Header />
 
         <main className="flex-grow-1">
+          {/* declare all the routes */}
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
 
-            {/* Protected Routes */}
+            {/* these are the protected routes */}
+            {/* to the dashboard */}
             <Route
               path="/dashboard"
               element={
@@ -33,6 +38,7 @@ export default function App() {
                 </ProtectedRoute>
               }
             />
+            {/* to the goals page */}
             <Route
               path="/goals"
               element={
@@ -41,6 +47,7 @@ export default function App() {
                 </ProtectedRoute>
               }
             />
+            {/* to the workout page */}
             <Route
               path="/workout"
               element={
@@ -49,6 +56,7 @@ export default function App() {
                 </ProtectedRoute>
               }
             />
+            {/* to the nutrition page */}
             <Route
               path="/nutrition"
               element={
@@ -57,6 +65,7 @@ export default function App() {
                 </ProtectedRoute>
               }
             />
+            {/* to the videos page */}
             <Route
               path="/videos"
               element={

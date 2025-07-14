@@ -8,7 +8,7 @@ export default function Dashboard() {
   return (
     <div className="container py-4">
 
-      {/* Nav Bar */}
+      {/* nav bar */}
       <nav className="mb-4">
         <Link to="/dashboard" className="mx-2">Dashboard</Link>
         <Link to="/goals" className="mx-2">Goals</Link>
@@ -18,14 +18,14 @@ export default function Dashboard() {
         <button onClick={logout} className="btn btn-sm btn-outline-danger float-end">Sign Out</button>
       </nav>
 
-      {/* Greeting & Title */}
+      {/* greeting and title */}
       <h2>Hello, {user?.name || 'User'}</h2>
       <h1>Dashboard</h1>
 
-      {/* Sections */}
+      {/* sections */}
       <div className="row mt-4">
 
-        {/* Current Goals */}
+        {/* current goals */}
         <div className="col-md-6 mb-3">
           <div className="card">
             <div className="card-header">
@@ -39,7 +39,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Recent Badges */}
+        {/* recent badges */}
         <div className="col-md-6 mb-3">
           <div className="card">
             <div className="card-header">
@@ -57,7 +57,7 @@ export default function Dashboard() {
 
       <div className="row">
 
-        {/* Today's Nutrition */}
+        {/* today's nutrition */}
         <div className="col-md-6 mb-3">
           <div className="card">
             <div className="card-header">
@@ -71,7 +71,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Today's Workout */}
+        {/* today's workout */}
         <div className="col-md-6 mb-3">
           <div className="card">
             <div className="card-header">
@@ -89,7 +89,7 @@ export default function Dashboard() {
 
       <div className="row">
 
-        {/* Keep Watching */}
+        {/* keep watching */}
         <div className="col-md-6 mb-3">
           <div className="card">
             <div className="card-header">

@@ -10,7 +10,7 @@ export default function Goals() {
   const [editingWorkout, setEditingWorkout] = useState(false)
   const [editingNutrition, setEditingNutrition] = useState(false)
 
-  const [completedWorkouts, setCompletedWorkouts] = useState([]) // array of { date: 'YYYY-MM-DD' }
+  const [completedWorkouts, setCompletedWorkouts] = useState([])
   const [badgesEarned, setBadgesEarned] = useState([])
 
   useEffect(() => {
@@ -71,7 +71,7 @@ export default function Goals() {
 
       <h1>Goals</h1>
 
-      {/* Workout Goals */}
+      {/* workout goals */}
       <div className="card my-3">
         <div className="card-header">
           Workout Goals
@@ -109,7 +109,7 @@ export default function Goals() {
         </ul>
       </div>
 
-      {/* Nutrition Goals */}
+      {/* nutrition goals */}
       <div className="card my-3">
         <div className="card-header">
           Nutrition Goals
@@ -134,7 +134,7 @@ export default function Goals() {
         </ul>
       </div>
 
-      {/* Badges Earned */}
+      {/* badges earned */}
       <div className="card my-3">
         <div className="card-header">Badges Earned</div>
         <ul className="list-group list-group-flush">

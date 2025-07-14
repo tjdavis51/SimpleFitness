@@ -23,7 +23,7 @@ export default function Videos() {
 
   return (
     <div className="container py-4">
-      {/* Navbar */}
+      {/* navbar */}
       <nav className="mb-4">
         <Link to="/dashboard" className="mx-2">
           Dashboard
@@ -50,7 +50,7 @@ export default function Videos() {
 
       <h1>Videos</h1>
 
-      {/* Album selector & note */}
+      {/* album selector and note */}
       <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap">
         <div>
           <label className="me-2">Albums:</label>
@@ -71,7 +71,7 @@ export default function Videos() {
         </div>
       </div>
 
-      {/* Video grid */}
+      {/* video grid */}
       <div className="row">
         {filteredVideos.map((video) => (
           <div className="col-md-6 col-lg-4 mb-4" key={video.id}>
