@@ -45,9 +45,13 @@ export default function Workout() {
   }
 
   const logPlan = (loggedPlan) => {
+    const workouts = JSON.parse(localStorage.getItem('completedWorkouts') || '[]')
+    workouts.push({
+      date: new Date().toISOString(),
+      plan: loggedPlan
+    })
+    localStorage.setItem('completedWorkouts', JSON.stringify(workouts))
     alert('Workout logged! Counts toward your goal.')
-    const count = parseInt(localStorage.getItem('completedWorkouts') || '0', 10)
-    localStorage.setItem('completedWorkouts', count + 1)
   }
 
   const removePlan = (index) => {

@@ -1,14 +1,26 @@
-import React, { useContext } from 'react'
-import { AuthContext } from '../contexts/AuthContext'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../contexts/AuthContext'
 
 export default function Dashboard() {
   const { user, logout } = useContext(AuthContext)
 
+  const [welcomeMsg, setWelcomeMsg] = useState('')
+  const [latestWorkout, setLatestWorkout] = useState(null)
+
+  useEffect(() => {
+    setWelcomeMsg('Welcome to your dashboard! Stay motivated!')
+
+    const workouts = JSON.parse(localStorage.getItem('completedWorkouts') || '[]')
+    if (workouts.length > 0) {
+      const lastWorkout = workouts[workouts.length - 1]
+      setLatestWorkout(lastWorkout.plan || null)
+    }
+  }, [])
+
   return (
     <div className="container py-4">
-
-      {/* Nav Bar */}
+      {/* Navbar */}
       <nav className="mb-4">
         <Link to="/dashboard" className="mx-2">Dashboard</Link>
         <Link to="/goals" className="mx-2">Goals</Link>
@@ -18,91 +30,59 @@ export default function Dashboard() {
         <button onClick={logout} className="btn btn-sm btn-outline-danger float-end">Sign Out</button>
       </nav>
 
-      {/* Greeting & Title */}
-      <h2>Hello, {user?.name || 'User'}</h2>
-      <h1>Dashboard</h1>
+      <h1>Hello, {user?.name || 'Guest'}</h1>
+      <p>{welcomeMsg}</p>
 
-      {/* Sections */}
-      <div className="row mt-4">
-
-        {/* Current Goals */}
-        <div className="col-md-6 mb-3">
-          <div className="card">
-            <div className="card-header">
-              Current Goals <Link to="/goals" className="float-end">Go to Goals</Link>
-            </div>
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">Goal 1</li>
-              <li className="list-group-item">Goal 2</li>
-              <li className="list-group-item">Goal 3</li>
-            </ul>
-          </div>
+      {/* Latest Workout */}
+      <div className="card my-3">
+        <div className="card-header">
+          <strong>Latest Logged Workout</strong>
+          <Link to="/workout" className="btn btn-sm btn-primary float-end">
+            View All
+          </Link>
         </div>
-
-        {/* Recent Badges */}
-        <div className="col-md-6 mb-3">
-          <div className="card">
-            <div className="card-header">
-              Recent Badges <Link to="/badges" className="float-end">View Badges</Link>
-            </div>
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">🏅 Badge 1</li>
-              <li className="list-group-item">🏅 Badge 2</li>
-              <li className="list-group-item">🏅 Badge 3</li>
+        <div className="card-body">
+          {latestWorkout ? (
+            <ul>
+              {latestWorkout.map((item, idx) => (
+                <li key={idx}>{item.exercise} — {item.duration} min</li>
+              ))}
             </ul>
-          </div>
+          ) : (
+            <p>No workouts logged yet. Start one on the <Link to="/workout">Workout Page</Link>.</p>
+          )}
         </div>
-
       </div>
 
+      {/* Other Sections */}
       <div className="row">
-
-        {/* Today's Nutrition */}
-        <div className="col-md-6 mb-3">
-          <div className="card">
-            <div className="card-header">
-              Today's Nutrition <Link to="/nutrition" className="float-end">Go to Nutrition</Link>
+        <div className="col-md-6">
+          <div className="card mb-3">
+            <div className="card-header">Current Goals</div>
+            <div className="card-body">
+              <Link to="/goals">View your goals here</Link>
             </div>
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">Calories: 2000 kcal</li>
-              <li className="list-group-item">Protein: 100g</li>
-              <li className="list-group-item">Fat: 50g</li>
-            </ul>
           </div>
         </div>
 
-        {/* Today's Workout */}
-        <div className="col-md-6 mb-3">
-          <div className="card">
-            <div className="card-header">
-              Today's Workout <Link to="/workout" className="float-end">Go to Workout</Link>
+        <div className="col-md-6">
+          <div className="card mb-3">
+            <div className="card-header">Today’s Nutrition</div>
+            <div className="card-body">
+              <Link to="/nutrition">Track your nutrition here</Link>
             </div>
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">Exercise 1</li>
-              <li className="list-group-item">Exercise 2</li>
-              <li className="list-group-item">Exercise 3</li>
-            </ul>
           </div>
         </div>
 
+        <div className="col-md-12">
+          <div className="card mb-3">
+            <div className="card-header">Keep Watching</div>
+            <div className="card-body">
+              <Link to="/videos">Continue watching your videos here</Link>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div className="row">
-
-        {/* Keep Watching */}
-        <div className="col-md-6 mb-3">
-          <div className="card">
-            <div className="card-header">
-              Keep Watching <Link to="/videos" className="float-end">Go to Videos</Link>
-            </div>
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">Last Video Title</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-
     </div>
   )
 }
