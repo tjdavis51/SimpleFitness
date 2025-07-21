@@ -5,7 +5,7 @@ import { AuthContext } from '../contexts/AuthContext'
 export default function Nutrition() {
   const { logout } = useContext(AuthContext)
 
-  const today = new Date().toISOString().slice(0, 10) // YYYY-MM-DD
+  const today = new Date().toISOString().slice(0, 10)
 
   const [calories, setCalories] = useState(0)
   const [mealInput, setMealInput] = useState(0)
@@ -21,7 +21,7 @@ export default function Nutrition() {
     fat: 0,
   })
 
-  // Load today's nutrition from localStorage
+  // load today's nutrition from localStorage
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('nutrition') || '{}')
     if (saved.date === today) {
@@ -59,7 +59,7 @@ export default function Nutrition() {
 
   return (
     <div className="container py-4">
-      {/* Navbar */}
+      {/* navbar */}
       <nav className="mb-4">
         <Link to="/dashboard" className="mx-2">Dashboard</Link>
         <Link to="/goals" className="mx-2">Goals</Link>
@@ -71,7 +71,7 @@ export default function Nutrition() {
 
       <h1>Nutrition</h1>
 
-      {/* Calories */}
+      {/* calories */}
       <div className="card p-3 mb-3">
         <h5>Today's Calories</h5>
         <p><strong>{calories}</strong> kcal</p>
@@ -83,13 +83,13 @@ export default function Nutrition() {
             onChange={(e) => setMealInput(e.target.value)}
             placeholder="Add Meal Calories"
           />
-          <button onClick={logMeal} className="btn btn-primary">
+          <button onClick={logMeal} className="btn btn-success">
             Log
           </button>
         </div>
       </div>
 
-      {/* Macros */}
+      {/* macros */}
       <div className="row">
         {['carbs', 'protein', 'fat'].map((macro) => (
           <div className="col-md-4" key={macro}>
@@ -106,7 +106,7 @@ export default function Nutrition() {
                   }
                   placeholder={`Add ${macro}`}
                 />
-                <button onClick={() => logMacro(macro)} className="btn btn-primary">
+                <button onClick={() => logMacro(macro)} className="btn btn-success">
                   Log
                 </button>
               </div>

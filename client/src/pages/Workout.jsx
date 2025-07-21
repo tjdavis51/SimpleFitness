@@ -10,7 +10,7 @@ export default function Workout() {
   const [plan, setPlan] = useState([])
   const [savedPlans, setSavedPlans] = useState([])
 
-  // Load saved plans from localStorage
+  // load saved plans from localStorage
   useEffect(() => {
     const storedPlans = JSON.parse(localStorage.getItem('savedPlans') || '[]')
     setSavedPlans(storedPlans)
@@ -62,7 +62,7 @@ export default function Workout() {
 
   return (
     <div className="container py-4">
-      {/* Navbar */}
+      {/* navbar */}
       <nav className="mb-4">
         <Link to="/dashboard" className="mx-2">Dashboard</Link>
         <Link to="/goals" className="mx-2">Goals</Link>
@@ -74,7 +74,7 @@ export default function Workout() {
 
       <h1>Workout</h1>
 
-      {/* Inputs */}
+      {/* inputs */}
       <div className="card p-3 mb-3">
         <div className="row g-3">
           <div className="col-md-6">
@@ -103,12 +103,12 @@ export default function Workout() {
           </div>
         </div>
 
-        <button onClick={generatePlan} className="btn btn-primary mt-3">
+        <button onClick={generatePlan} className="btn btn-success mt-3">
           Generate Plan
         </button>
       </div>
 
-      {/* Generated Plan */}
+      {/* generated plan */}
       {plan.length > 0 && (
         <div className="card p-3 mb-3">
           <h5>Generated Plan</h5>
@@ -126,7 +126,7 @@ export default function Workout() {
         </div>
       )}
 
-      {/* Saved Plans */}
+      {/* saved plans */}
       <h4>My Saved Plans</h4>
       <div className="row">
         {savedPlans.map((saved, idx) => (
