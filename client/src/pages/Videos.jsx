@@ -24,29 +24,31 @@ export default function Videos() {
   return (
     <div className="container py-4">
       {/* navbar */}
-      <nav className="mb-4">
-        <Link to="/dashboard" className="mx-2">
+    <nav className="mb-4 d-flex align-items-center">
+      <div className="btn-group">
+        <Link to="/dashboard" className="btn btn-success btn-sm">
           Dashboard
         </Link>
-        <Link to="/goals" className="mx-2">
+        <Link to="/goals" className="btn btn-success btn-sm">
           Goals
         </Link>
-        <Link to="/videos" className="mx-2">
+        <Link to="/videos" className="btn btn-success btn-sm">
           Videos
         </Link>
-        <Link to="/workout" className="mx-2">
+        <Link to="/workout" className="btn btn-success btn-sm">
           Workout
         </Link>
-        <Link to="/nutrition" className="mx-2">
+        <Link to="/nutrition" className="btn btn-success btn-sm">
           Nutrition
         </Link>
-        <button
-          onClick={logout}
-          className="btn btn-sm btn-outline-danger float-end"
-        >
-          Sign Out
-        </button>
-      </nav>
+      </div>
+      <button
+        onClick={logout}
+        className="btn btn-sm btn-outline-danger ms-auto"
+      >
+        Sign Out
+      </button>
+    </nav>
 
       <h1>Videos</h1>
 
